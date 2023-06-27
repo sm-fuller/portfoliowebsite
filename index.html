@@ -4,31 +4,74 @@
 <head>
     <title>Personal Portfolio</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="resources/style.css" rel="stylesheet">
-    <script src="resources/script.js" defer></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Internal Resources -->
+    <link type="text/css" href="resources/css/reset.css" rel="stylesheet" />
+    <link type="text/css" href="resources/css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="resources/js/script.js" defer></script>
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul id="menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="content container">
+            <h1>Full-Stacker</h1>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#" class="active">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-        <section id="about">
-
-        </section>
-        <section id="projects">
-            
-        </section>
+        <div class="content container">
+            <div class="title">
+                <h2 id="pageTitle">About</h2>
+            </div>
+            <div id="about">
+                <div class="info">
+                    <h3>Hi, there!</h3>
+                    <p>I'm Shanna, a developer. I am dedicated to learning and advancing in the world of technology in
+                        aims to delivering
+                        efficient and effective solutions to end users.</p>
+                    <p>In my <span id="yearSpan"></span> years of doing web development, I have gained experience in:</p>
+                    <ul>
+                        <li>Front-End Development</li>
+                        <li>Back-End Development</li>
+                        <li>API Development</li>
+                        <li>Database Management</li>
+                        <li>Version Control</li>
+                        <li>Web Hosting</li>
+                    </ul>
+                    <p>See some of my <a href="#" id="goToProjects">projects</a> from the Full-Stack Engineer Career
+                        Path on CodeCademy.</p>
+                </div>
+                <div class="img-container" id="aboutImage"></div>
+            </div>
+            <div id="projects" style="display: none;">
+                <div class="info">
+                    <div class="project">
+                        <h3 id="projectTitle"></h3>
+                        <p id="projectDescription"></p>
+                        <ul id="projectTechnologies">
+                            <li>Technologies:</li>
+                        </ul>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                    <span id="next">&gt;</span>
+                </div>
+                <div class="img-container" id="projectImage"></div>
+            </div>
+            <div class="footer">
+                <p id="currentYear">&nbsp;</p>
+            </div>
+        </div>
     </main>
-    <footer>
-        
-    </footer>
 </body>
 
 </html>
