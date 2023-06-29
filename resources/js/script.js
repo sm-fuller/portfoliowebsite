@@ -39,7 +39,10 @@ const projectsInfo = [
 /* Functions */
 const setSpanYears = () => {
     const yearDiff = today.getFullYear() - startYear;
-    document.getElementById('yearSpan').innerHTML = yearDiff;
+    const yearSpan = document.getElementById('yearSpan');
+    if (yearSpan) {
+        yearSpan.innerHTML = yearDiff;
+    }
 };
 
 function addListItem(parentList, listItemText) {
@@ -48,25 +51,28 @@ function addListItem(parentList, listItemText) {
     parentList.appendChild(listItem);
 }
 
-function toggleNav(event) {
+function toggleNav(target) {
     // sets page title text for current navigation link
-    pageTitle.innerHTML = event.target.innerHTML;
+    pageTitle.innerHTML = target;
     // sets active status on current navigation link
     const links = document.getElementById('menu').querySelectorAll('a');
     links.forEach(link => {
         link.classList.remove('active');
     });
-    event.target.classList.add('active');
     // displays content for current navigation link
     aboutDiv.style.display = 'none';
     projectsDiv.style.display = 'none';
-    switch (event.target.innerHTML.toLowerCase()) {
+    currentIndex = -1;
+    switch (target.toLowerCase()) {
         case "about": {
             aboutDiv.style.display = '';
+            document.querySelector('a[href="index.html"').classList.add('active');
             break;
         }
         case "projects": {
             projectsDiv.style.display = '';
+            document.querySelector('a[href="index.html?projects"').classList.add('active');
+            toggleProject();
             break;
         }
     }
@@ -92,18 +98,22 @@ function toggleProject() {
 
 /* General Code */
 const nextButton = document.getElementById('next');
-nextButton.addEventListener('click', toggleProject);
-
-const eventlinks = document.getElementById('menu').querySelectorAll('a[href="#"]');
-eventlinks.forEach(link => {
-    link.addEventListener('click', toggleNav);
-});
-
-const goToLink = document.getElementById('goToProjects');
-goToLink.addEventListener('click', toggleNav);
+if (nextButton) {
+    nextButton.addEventListener('click', toggleProject);
+}
 
 const currentYear = document.getElementById('currentYear');
-currentYear.innerHTML = today.getFullYear();
+if (currentYear) {
+    currentYear.innerHTML = today.getFullYear();
+}
 
 setSpanYears();
-toggleProject();
+
+if (!window.location.href.includes('contact.html')) {
+    if (window.location.search === '?projects') {
+        toggleNav('projects');
+    }
+    else {
+        toggleNav('about');
+    }
+}

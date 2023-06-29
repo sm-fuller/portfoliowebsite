@@ -150,23 +150,19 @@ img {
     height: auto;
 }
 
-#about {
+#about, #contact {
     display: grid;
     grid-template: 100% / 100%;
     color: #FFFFFF;
 }
 
-#aboutImage {
-    display: none;
-}
-
-#about .info, .project {
+#about .info, .project, #contact .info {
     padding: 1.25rem;
     font-weight: 500;
     line-height: 1.5rem;
 }
 
-#about .info, #projects .info {
+#about .info, #projects .info, #contact .info {
     overflow-y: auto;
 }
 
@@ -180,7 +176,7 @@ h3 {
     line-height: initial;
 }
 
-#about .info>*:last-child {
+#about .info>*:last-child, #contact .info > *:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -192,7 +188,7 @@ h3 {
     columns: 3;
 }
 
-#about ul li::before {
+#about ul li::before, #contact ul li::before {
     content: '> ';
     color: rgba(254, 151, 246, 0.5);
 }
@@ -205,6 +201,7 @@ h3 {
 
 #aboutImage {
     background-image: url('../images/about.jpg');
+    display: none;
 }
 
 #projects {
@@ -237,8 +234,8 @@ a.read-more {
 
 #next {
     position: absolute;
-    top: 1.875rem;
-    right: 1.875rem;
+    top: 1.25rem;
+    right: 1.25rem;
     border: 2px solid #FFFFFF;
     border-radius: 50%;
     padding: 2px 6px;
@@ -263,10 +260,6 @@ a.read-more {
 }
 
 /* Media Queries */
-@media only screen and (min-width: 576px) {
-    
-}
-
 @media only screen and (max-width: 576px) {
     #pageTitle {
         font-size: 1rem;
@@ -292,9 +285,15 @@ a.read-more {
     }
 
     #about .info,
-    .project {
+    .project,
+    #contact .info {
         padding: 1.5625rem;
         line-height: 1.8rem;
+    }
+
+    #next {
+        top: 1.5625rem;
+        right: 1.5625rem;
     }
 }
 
@@ -312,12 +311,14 @@ a.read-more {
     }
 
     #about,
-    #projects {
+    #projects,
+    #contact {
         grid-template: 100% / 1fr 1fr;
     }
 
     #about .info,
-    .project {
+    .project,
+    #contact .info {
         padding: 1.875rem;
         line-height: 2rem;
     }
@@ -329,12 +330,9 @@ a.read-more {
     #pageTitle {
         font-size: 1.5rem;
     }
-}
 
-@media only screen and (min-width: 1200px) {
-    
-}
-
-@media only screen and (min-width: 1400px) {
-    
+    #next {
+        top: 1.875rem;
+        right: 1.875rem;
+    }
 }
