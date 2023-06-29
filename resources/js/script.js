@@ -1,12 +1,3 @@
-/* Page Elements */
-const pageTitle = document.getElementById('pageTitle');
-const projectTitle = document.getElementById('projectTitle');
-const projectDescription = document.getElementById('projectDescription');
-const projectTechnologies = document.getElementById('projectTechnologies');
-const projectImage = document.getElementById('projectImage');
-const aboutDiv = document.getElementById('about');
-const projectsDiv = document.getElementById('projects');
-
 /* Variables */
 const today = new Date();
 const startYear = 2014;
@@ -18,21 +9,24 @@ const projectsInfo = [
         title: 'Coffee Lovers',
         description: 'This challenge project includes a homepage for an imagined company, named Coffee Lovers, and was built using CSS Flexbox design.Coffee Lovers is a place where coffee lovers can meet and enjoy the variety of flavors they have to offer.',
         technologies: ['HTML', 'CSS'],
-        image: 'coffeelovers_full.png'
+        image: 'coffeelovers_full.png',
+        url: 'https://sm-fuller.github.io/companyhomepage.io/'
     },
     {
         project: 'photogens',
         title: 'PhotoGens',
         description: 'This challenge project includes a homepage for an imagined club group, named PhotoGens, and was built using CSS responsive design.PhotoGens is a non- profit organization, dedicated to promoting the art and science of photography.',
         technologies: ['HTML', 'CSS'],
-        image: 'photogens_full.png'
+        image: 'photogens_full.png',
+        url: 'https://sm-fuller.github.io/responsiveclubwebsite.io/'
     },
     {
         project: 'websitedesign',
         title: 'Website Design',
         description: 'This challenge project provides a proposed design layout for a website. The details are given in the form of a web page that is styled using the same design details outlined on the page, thus giving a preview of the design. The design details include color scheme, web fonts, text styles and button styles.',
         technologies: ['HTML', 'CSS'],
-        image: 'websitedesign_full.png'
+        image: 'websitedesign_full.png',
+        url: 'https://sm-fuller.github.io/websitedesign.io/'
     }
 ];
 
@@ -52,8 +46,11 @@ function addListItem(parentList, listItemText) {
 }
 
 function toggleNav(target) {
+    const aboutDiv = document.getElementById('about');
+    const projectsDiv = document.getElementById('projects');
+
     // sets page title text for current navigation link
-    pageTitle.innerHTML = target;
+    document.getElementById('pageTitle').innerHTML = target;
     // sets active status on current navigation link
     const links = document.getElementById('menu').querySelectorAll('a');
     links.forEach(link => {
@@ -85,10 +82,12 @@ function toggleProject() {
     }
 
     const currentProject = projectsInfo[currentIndex];
-    projectTitle.innerHTML = currentProject.title;
-    projectDescription.innerHTML = currentProject.description;
-    projectImage.style.backgroundImage = `url("./resources/images/${currentProject.image}")`;
+    document.getElementById('projectTitle').innerHTML = currentProject.title;
+    document.getElementById('projectDescription').innerHTML = currentProject.description;
+    document.getElementById('visit').setAttribute('href', currentProject.url);
+    document.getElementById('projectImage').style.backgroundImage = `url("./resources/images/${currentProject.image}")`;
 
+    const projectTechnologies = document.getElementById('projectTechnologies');
     while (projectTechnologies.firstChild) {
         projectTechnologies.removeChild(projectTechnologies.firstChild);
     }
